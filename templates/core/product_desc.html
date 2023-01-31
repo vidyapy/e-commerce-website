@@ -1,0 +1,49 @@
+
+{% load static %}
+
+{% load cart_template_tag %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Product Page - Description</title>
+    <link rel="stylesheet" href="{% static 'css/descstyle.css' %}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
+    
+</head>
+<body>
+    <div class="product-card">
+    <h1>{{product.name}}</h1>
+    <p>{{product.desc}}</p>
+    <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
+                data-mdb-ripple-color="light">
+                <img src="{{product.img.url}}"
+                    class="w-100" width ="300" height ="300"/>
+    <div class="product-info">
+        <div class="product-price">{{product.price}}&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        <div class = "action">
+        <a href="{% url 'add_cart' product.pk %}" class="product-button">Add to Cart</a>
+
+        </div>
+        
+    
+
+    </div>
+    <br>
+    <div>
+    <a href="{% url 'home' %}" class = "btn btn-warning float-right ml-2">continue shopping</a>
+    </div>
+    </div>
+
+    <script>
+        $(".product-colors span").click(function(){
+        $(".product-colors span").removeClass("active");
+        $(this).addClass("active");
+        $("body").css("background",$(this).attr("data-color"));
+        $(".product-price").css("color",$(this).attr("data-color"));
+        $(".product-button").css("color",$(this).attr("data-color"));
+        $(".product-pic").css("background-image",$(this).attr("data-pic"));
+    });
+    </script>
+</body>
+</html>

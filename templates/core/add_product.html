@@ -1,0 +1,82 @@
+{% comment %} <h2>
+    Add Products
+</h2>
+<div class="container m-5">
+    <form action="{% url 'add_product' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" name="submit" value="Add product">
+    </form>
+</div> {% endcomment %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add_Product</title>
+    <link rel="stylesheet" href="{% static 'css/logincss.css' %}">
+    <script src="{% static 'js/loginjs.js' %}"></script>
+</head>
+<body>
+    <div class="login-page">
+        <div class="form">
+        <form class="register-form">
+        
+        <p class="message"><a href="#">Add Product</a></p>
+        </form>
+        <form class="login-form" method ="post" action="{% url 'add_product' %}" enctype="multipart/form-data" >
+            {% csrf_token %}
+            <h2 style= "background-color: aquamarine; text-align:center">Add product</h2>
+            
+            <div class ="form-group">
+            {{form.as_p}}
+            <input name = "add_product" id="add_product" class = "btn btn-block login-btn" type="submit" value="add_product" style="background:#98AFC7;">
+            {% if messages %}
+            {% for message in messages %}
+            <p class="message" style = "color:red;">{{message}}</p>
+            {% endfor %}
+            {% endif %}
+            <p class="message">Not registered? <a href="{% url 'user_register' %}">Create an account</a></p>
+        </form>
+        </div>
+    </div> 
+    
+    
+</body>
+</html> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

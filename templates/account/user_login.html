@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/logincss.css' %}">
+    <script src="{% static 'js/loginjs.js' %}"></script>
+</head>
+<body>
+    <div class="login-page">
+        <div class="form">
+        <form class="register-form">
+            <input type="text" placeholder="name"/>
+            <input type="password" placeholder="password"/>
+            <input type="text" placeholder="email address"/>
+            <button>create</button>
+            <p class="message">Already registered? <a href="#">Sign In</a></p>
+        </form>
+        <form class="login-form" method ="post" >
+            {% csrf_token %}
+            <input type="text"  name="username" id="username"  placeholder="username">
+            <input type="password"  name="password" id="password"  placeholder="password">
+            <button>login</button>
+            {% if messages %}
+            {% for message in messages %}
+            <p class="message" style = "color:red;">{{message}}</p>
+            {% endfor %}
+            {% endif %}
+            <p class="message">Not registered? <a href="{% url 'user_register' %}">Create an account</a></p>
+        </form>
+        </div>
+    </div>
+    
+    
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
